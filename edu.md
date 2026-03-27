@@ -305,12 +305,16 @@ npm run dev
 
 ### 2026-03-26
 
-**Bug Fixes:**
-1. **Quiz generation API key validation** (`server/routes/quiz.js`) — Added check for missing or placeholder API key (`your_key_here`). Now returns a clear error message instead of a cryptic SDK failure.
-
 **Migration:**
-4. **Switched from Anthropic Claude API to Google Gemini API** — Replaced `@anthropic-ai/sdk` with `@google/generative-ai`. Model changed from `claude-sonnet-4-20250514` to `gemini-1.5-flash` (free tier). Updated `upload.js`, `quiz.js`, `.env` (now uses `GEMINI_API_KEY`), and `package.json`.
-2. **Retry quiz generates new questions** (`client/src/pages/QuizPage.js`) — Previously, clicking "Retry Quiz" cleared the cache but reused the same questions from React state. Now it resets all state, shows loading, and fetches brand new questions from the API.
+1. **Switched from Anthropic Claude API to Google Gemini API** — Replaced `@anthropic-ai/sdk` with `@google/generative-ai`. Model changed from `claude-sonnet-4-20250514` to `gemini-1.5-flash` (free tier). Updated `upload.js`, `quiz.js`, `.env` (now uses `GEMINI_API_KEY`), and `package.json`.
+
+**Bug Fixes:**
+2. **Quiz generation API key validation** (`server/routes/quiz.js`) — Added check for missing or placeholder API key (`your_key_here`). Now returns a clear error message instead of a cryptic SDK failure.
+3. **Retry quiz generates new questions** (`client/src/pages/QuizPage.js`) — Previously, clicking "Retry Quiz" cleared the cache but reused the same questions from React state. Now it resets all state, shows loading, and fetches brand new questions from the API.
 
 **Features:**
-3. **Practice sheets show "Mark as Done"** (`client/src/pages/LessonPage.js`) — Practice sheets (type `"practice"` or title containing "Practice") now show a green "Mark as Done" button instead of "Take Quiz →". Clicking it marks the practice as complete in localStorage and updates the daily goal. Regular lessons still show "Take Quiz →" with the 70% pass requirement.
+4. **Practice sheets show "Mark as Done"** (`client/src/pages/LessonPage.js`) — Practice sheets (type `"practice"` or title containing "Practice") now show a green "Mark as Done" button instead of "Take Quiz →". Clicking it marks the practice as complete in localStorage and updates the daily goal. Regular lessons still show "Take Quiz →" with the 70% pass requirement.
+
+**DevOps:**
+5. **Added `.gitignore`** — Excludes `node_modules/`, `client/build/`, `.env`, and log files from version control.
+6. **Pushed to GitHub** — Repository created at `github.com/Mind-in-code/EduTrack` (public).
